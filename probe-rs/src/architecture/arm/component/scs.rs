@@ -56,6 +56,7 @@ mod register {
             match self.implementer() {
                 0x41 => String::from("ARM Ltd"),
                 0x49 => String::from("Infineon"),
+                0x63 => String::from("ARM China"),
                 0x72 => String::from("Realtek"),
                 other => format!("{other:#x}"),
             }
@@ -76,6 +77,10 @@ mod register {
                     0xD22 => String::from("Cortex-M55"),
                     0xD23 => String::from("Cortex-M85"),
                     0xD24 => String::from("Cortex-M52"),
+                    _ => format!("{:#x}", self.partno()),
+                },
+                0x63 => match self.partno() {
+                    0x132 => String::from("STAR-MC1"),
                     _ => format!("{:#x}", self.partno()),
                 },
                 _ => format!("{:#x}", self.partno()),
